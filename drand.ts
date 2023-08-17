@@ -1,4 +1,4 @@
-import { ChainOptions } from "npm:drand-client@^1.0.0-pre.10";
+import { ChainOptions } from "./deps.ts";
 
 const chainHash = "dbd506d6ef76e5f386f41c651dcb808c5bcbd75471cc4eafa3f4df7ad4e4c493";
 const publicKey =
@@ -22,16 +22,25 @@ export const drandUrls = [
 const DRAND_GENESIS = 1677685200;
 const DRAND_ROUND_LENGTH = 3;
 
-// Time of round in seconds.
-//
-// See TimeOfRound implementation: https://github.com/drand/drand/blob/eb36ba81e3f28c966f95bcd602f60e7ff8ef4c35/chain/time.go#L30-L33
+/**
+ * Time of round in milliseconds.
+ *
+ * See TimeOfRound implementation: https://github.com/drand/drand/blob/eb36ba81e3f28c966f95bcd602f60e7ff8ef4c35/chain/time.go#L30-L33
+ */
 export function timeOfRound(round: number): number {
-  return (DRAND_GENESIS + (round - 1) * DRAND_ROUND_LENGTH);
+  return (DRAND_GENESIS + (round - 1) * DRAND_ROUND_LENGTH) * 1000;
 }
 
 /**
  * Time between publishing and now in milliseconds
  */
 export function publishedSince(round: number): number {
-  return Date.now() - timeOfRound(round) * 1000;
+  return Date.now() - timeOfRound(round);
+}
+
+/**
+ * Time between now and publishing in milliseconds
+ */
+export function publishedIn(round: number): number {
+  return -publishedSince(round);
 }
