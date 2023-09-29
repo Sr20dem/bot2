@@ -2,10 +2,16 @@
   "rpcEndpoint": "https://nois-testnet-rpc.itrocket.net:443",
   "rpcEndpoint2": "",
   "rpcEndpoint3": "",
-  "contract": "nois14xef285hz5cx5q9hh32p9nztu3cct4g44sxjgx3dmftt2tj2rweqkjextk",
+  "drandAddress": "nois14xef285hz5cx5q9hh32p9nztu3cct4g44sxjgx3dmftt2tj2rweqkjextk",
+  "gatewayAddress": "nois1xwde9rzqk5u36fke0r9ddmtwvh43n4fv53c5vc462wz8xlnqjhls6d90xc",
   "mnemonic": "",
   "denom": "unois",
   "gasPrice": "0.05unois",
   "prefix": "nois",
-  "moniker": ""
+  "moniker": "",
+  "drandEndpoints": [
+    "https://api2.drand.sh/",
+    "https://api3.drand.sh/",
+    "https://drand.cloudflare.com/"
+  ]
 }
